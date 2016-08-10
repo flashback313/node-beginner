@@ -1,0 +1,19 @@
+{
+  "name": "nodebeginner",
+  "version": "1.0.0",
+  "description": "node practice",
+  "main": "index.js",
+  "dependencies": {
+    "formidable": "^1.0.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "flashback313",
+  "license": "ISC"
+}
