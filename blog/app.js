@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// mongo
+var MongoStore = require('connect-mongo');
+var setting = require('../setting');
 
 var routes = require('./routes/index');
 
@@ -19,6 +22,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+// session
+app.use(express.session({
+  secret: setting.cookieSecret,
+  store: new MongoStore({
+    db: setting.db
+  })
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
@@ -62,6 +72,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 
 module.exports = app;
