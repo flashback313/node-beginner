@@ -52,16 +52,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', routes.index);
-app.get('/u/:user', routes.user);
-app.post('/post', routes.post);
-app.get('/reg', routes.reg);
-app.post('/reg', routes.doReg);
-app.get('/login', routes.login);
-app.post('/login', routes.doLogin);
-app.get('/logout', routes.logout);
-
-
+// init routes
+routes(app);
 
 
 // catch 404 and forward to error handler
