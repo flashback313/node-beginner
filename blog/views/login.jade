@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	h2 #{title}
+	form(method='post')
+		p
+			label
+				span 用户名 
+				input(name='username',type='text')
+		p
+			label
+				span 密码
+				input(name='password',type='password')
+		button(type='submit') 登录

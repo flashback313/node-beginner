@@ -7,7 +7,10 @@ var bodyParser = require('body-parser');
 // session
 var session = require('express-session');
 // mongo
-var MongoStore = require('connect-mongo');
+var MongoStore = require('connect-mongo')(session);
+// flash
+var flash = require('connect-flash');
+
 var setting = require('./setting');
 
 var routes = require('./routes/index');
@@ -27,16 +30,19 @@ app.use(cookieParser());
 // session
 app.use(session({
   secret: setting.cookieSecret,
+  store: new MongoStore({
+    url: 'mongodb://localhost/microblog'
+  }),
   resave: false,
   saveUninitialized: true
 }));
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
 app.get('/u/:user', routes.user);
 app.post('/post', routes.post);
-app.get('/reg', routes.reg);
 app.get('/reg', routes.reg);
 app.post('/reg', routes.doReg);
 app.get('/login', routes.login);
