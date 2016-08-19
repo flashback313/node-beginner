@@ -1,8 +1,9 @@
 extends layout
 
 block content
-	p Welcome to Myblog
-	ul
-		li: a(href='/') 首页
-		li: a(href='/login') 登录
-		li: a(href='/reg') 注册
+	div.hero-unit
+		h1 欢迎来到 Microblog
+		p 这是一个基于 nodejs 的博客系统
+		p
+			a.btn.btn-primary.btn-large(href='/login') 登录
+			a.btn.btn-large('/reg') 立即注册

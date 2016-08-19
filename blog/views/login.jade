@@ -1,10 +1,9 @@
 extends layout
 
 block content
-
 	form.form-horizontal(method='post')
 		fieldset
-			legend 用户注册
+			legend 用户登录
 			div.control-group
 				label.control-label(for='username') 用户名
 				div.controls
@@ -13,10 +12,5 @@ block content
 				label.control-label(for='password') 密码
 				div.controls
 					input#password.input-xlarge(name='password')
-			div.control-group
-				label.control-label(for='password-repeat') 再输一次
-				div.controls
-					input#password-repeat.input-xlarge(name='password-repeat')
 			div.form-actions
-				button.btn.btn-primary(type='submit') 注册
-		
+				button.btn.btn-primary(type='submit') 登录
