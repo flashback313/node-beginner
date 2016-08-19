@@ -1,14 +1,16 @@
 extends layout
 
 block content
-	h2 #{title}
-	form(method='post')
-		p
-			label
-				span 用户名 
-				input(name='username',type='text')
-		p
-			label
-				span 密码
-				input(name='password',type='password')
-		button(type='submit') 登录
+	form.form-horizontal(method='post')
+		fieldset
+			legend 用户登录
+			div.control-group
+				label.control-label(for='username') 用户名
+				div.controls
+					input#username.input-xlarge(name='username')
+			div.control-group
+				label.control-label(for='password') 密码
+				div.controls
+					input#password.input-xlarge(name='password')
+			div.form-actions
+				button.btn.btn-primary(type='submit') 登录

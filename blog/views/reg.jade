@@ -1,15 +1,22 @@
 extends layout
 
 block content
-	h2 注册
-	form(method='post')
-		p
-			label
-				input(type='text',name='username')
-		p
-			label
-				input(type='password',name='password')
-		p
-			label
-				input(type='password',name='password-repeat')
-		button(type='submit') 注册
+
+	form.form-horizontal(method='post')
+		fieldset
+			legend 用户注册
+			div.control-group
+				label.control-label(for='username') 用户名
+				div.controls
+					input#username.input-xlarge(name='username')
+			div.control-group
+				label.control-label(for='password') 密码
+				div.controls
+					input#password.input-xlarge(name='password')
+			div.control-group
+				label.control-label(for='password-repeat') 再输一次
+				div.controls
+					input#password-repeat.input-xlarge(name='password-repeat')
+			div.form-actions
+				button.btn.btn-primary(type='submit') 注册
+		

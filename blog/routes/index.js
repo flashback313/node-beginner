@@ -65,18 +65,24 @@ exports.doLogin = function(req, res) {
 	var username = req.body.username;
 
 	User.get(username,function(err,user) {
-		if(user) {
-			return res.redirect('/');
+		if(!user) {
+			req.flash('error','用户不存在');
+			return res.redirect('/longin');
 		}
-		req.session.user = new User({
-			name: username,
-			password: password
-		});
+		if(user.password !== password) {
+			req.flash('error','用户口令错误');
+			return res.redirect('/longin');
+		}
+		req.session.user = user;
 		req.flash('success','登录成功');
-		return res.redirect('/reg');
+		return res.redirect('/');
 	})
 };
 exports.logout = function(req, res) {
+	req.session.user = null;
+	console.log(req.session);
+	req.flash('success','登出成功');
+	return res.redirect('/');
 };
 
 
